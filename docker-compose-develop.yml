@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web-app:
+    build:
+      context: .
+      dockerfile: ./.devcontainer/dockerfiles/web-app/Dockerfile.develop
+      args:
+        TZ: 'Asia/Tokyo'
+        PHP_MAJOR_VERSION: 8
+        COMPOSER_VERSION: 2
+        WORK_DIR: '/usr/local/src'
+    restart: always
+    env_file:
+      - ./.devcontainer/services/web-app/.env.develop
+    ports:
+      - '${APACHE_HOST_PORT:-80}:80'
