@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web-app:
+    platform: linux/amd64
     build:
       context: .
       dockerfile: ./.devcontainer/dockerfiles/web-app/Dockerfile.develop
